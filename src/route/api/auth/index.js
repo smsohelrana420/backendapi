@@ -1,7 +1,8 @@
 const express = require("express");
+const {singupController} = require("../../../controller/authController");
+
+
 const router = express.Router();
 
-router.get('/signup',(req,res)=>{
-    return res.send("signup")
-})
+router.post('/signup',singupController)
 module.exports = router;
