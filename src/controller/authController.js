@@ -75,7 +75,7 @@ const loginController=async(req,res,next)=>{
     bcrypt.compare(password,user.password, function (err, result) {
       if(result){
         let token = jwt.sign({ email: user.email,role:user.role }, process.env.PRIVATE_KEY, {
-          expiresIn: "1m",
+          expiresIn: "2m",
         });
         return res.status(200).json({success:true,message:"login successfull",data:user,token})
       }else{
