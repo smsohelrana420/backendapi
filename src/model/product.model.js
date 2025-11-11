@@ -7,6 +7,10 @@ const productSchema = new mongoose.Schema(
       required: [true, "title is required"],
       unique: true,
     },
+    image:{
+         type:Array,
+         required:[true,"Image is required"]
+    },
     description: {
       type: String,
       required: [true, "description is required"],
