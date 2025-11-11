@@ -46,4 +46,41 @@ const addSubCategoryController = async (req, res) => {
   }
 };
 
-module.exports = { addSubCategoryController };
+const deleteSubcategoryController=async(req,res)=>{
+try {
+  let {id}=req.params
+  await subcategoryModel.findByIdAndDelete(id)
+
+await  categoryModel.findOneAndUpdate({subcategory:id},{$pull:{subcategory:id}})
+
+  return res.status(200).json({success:true,message:"sub category deleted succussfull"})
+} catch (error) {
+  return res.status(500).json({success:false,message:error.message || error})
+}
+}
+
+const updateSubcategoryController=async(req,res)=>{
+try {
+  let { id } = req.params;
+  let {name}=req.body
+  let slug = slugify(name, {
+    replacement: "-",
+    remove: undefined,
+    lower: true,
+    trim: true,
+  });
+  await subcategoryModel.findByIdAndUpdate(id,{name,slug})
+
+  return res.status(200).json({success:true,message:"subcategory updated.........."})
+} catch (error) {
+  return res
+    .status(500)
+    .json({ success: false, message: error.message || error });
+}
+}
+
+module.exports = {
+  addSubCategoryController,
+  deleteSubcategoryController,
+  updateSubcategoryController,
+};

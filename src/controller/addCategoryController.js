@@ -115,7 +115,10 @@ let updateCategoryController=async(req,res)=>{
 let allCategoryController=async(req,res)=>{
 try {
 
-  let allcategory =await categoryModel.find({})
+  let allcategory = await categoryModel.find({}).populate({
+    path: "subcategory",
+    select:("name slug")
+  });
 
   return res.status(200).json({success:true,message:"category fetch successfull",data:allcategory})
   
