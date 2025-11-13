@@ -32,6 +32,10 @@ const upload = multer({
     checkFileType(file, cb);
     // limits:{filesize:2000000}
   },
+  // limits:{
+  //   fileSize:5*1024*1024,
+  //   files:3
+  // }
 });
 
 module.exports=upload

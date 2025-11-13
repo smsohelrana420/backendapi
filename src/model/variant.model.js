@@ -2,15 +2,18 @@ const { default: mongoose } = require("mongoose");
 
 const variantSchema = new mongoose.Schema(
   {
+    product: {
+      type: mongoose.Types.ObjectId,
+      ref: "Product",
+    },
     size: {
       type: String,
-      unique:true
       
     },
-   
+
     stock: {
       type: Number,
-
+      default:0
     },
   },
   { timestamps: true }
