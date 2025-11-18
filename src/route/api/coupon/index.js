@@ -1,9 +1,10 @@
 const express=require('express')
-const { couponController } = require('../../../controller/couponController')
+const {  createCouponController, applyCouponController } = require('../../../controller/couponController')
 
 const router=express.Router()
 
-router.post("/create",couponController)
+router.post("/create",createCouponController)
+router.post("/apply",applyCouponController)
 
 
 

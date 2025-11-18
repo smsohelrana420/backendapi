@@ -6,6 +6,14 @@ const couponSchema = new mongoose.Schema(
       type: String,
       
     },
+    minPrice:{
+      type:Number,
+      required:true
+    },
+    amount:{
+      type:Number,
+      required:true
+    }
    
   },
   { timestamps: true }
